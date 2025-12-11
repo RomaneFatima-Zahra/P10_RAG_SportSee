@@ -1,0 +1,173 @@
+[
+  {
+    "id": "000",
+    "question": "Quelle est l'équipe avec le plus grand nombre de joueurs ?",
+    "ground_truth": "L'équipe ayant le plus grand nombre de joueurs est Philadelphia 76ers avec 23 joueurs",
+    "category": "simple",
+    "language" : "fr"
+  },
+
+  {
+    "id": "001",
+    "question": " combien de joueurs ont plus de 2000 points au total ?",
+    "ground_truth": "seulement 4 joueurs ont plus de 2000 points au total : Shai Gilgeous-Alexander, Anthony Edwards, Nikola Jokić, et Giannis Antetokounmpo.",
+    "category": "moyenne",
+    "language" : "fr"
+  },
+  
+  {
+    "id": "1",
+    "question": "Which players are highlighted as impressive performers in the playoffs according to the discussion?",
+    "ground_truth": "The discussion highlights Paolo Banchero, Franz Wagner, Anthony Edwards, and Julius Randle as particularly impressive performers in the playoffs.",
+    "category": "simple",
+    "language": "en"
+  },
+
+   {
+    "id": "2",
+    "question": "Pourquoi les Magic d'Orlando sont-ils critiqués malgré leurs performances impressionnantes selon certains commentateurs?",
+    "ground_truth": "Certains commentateurs critiquent les Magic parce qu'ils ont un jeu offensif très limité (qualifié de 'terrorisme basketball'), manquent cruellement de tireurs à trois points, et compensent par un jeu physique parfois dangereux qui a blessé plusieurs joueurs des Celtics.",
+    "category": "moyenne",
+    "language": "fr"
+    
+  },
+
+  {
+    "id": "r3_3",
+    "question": "Which player is highlighted as extremely efficient in NBA playoffs?",
+    "ground_truth": "Reggie Miller.",
+    "category": "simple",
+    "language": "en"
+  },
+
+  { "id": "r2_4",
+    "question": "Quel facteur est souvent accusé de faire baisser les audiences ?",
+    "ground_truth": "Les petits marchés et l’absence de superstars médiatiques.",
+    "category": "simple",
+    "language": "fr"
+  },
+{
+    "id": "r2_20",
+    "question": "What marketing strategy of the NBA is criticized?",
+    "ground_truth": "Overemphasis on individual stars instead of teams.",
+    "category": "moyenne",
+    "language": "en"
+  },
+
+  {
+    "id": "r2_5",
+    "question": "La baisse d’audience est expliquée par une seule cause unique.",
+    "ground_truth": "Faux. Plusieurs facteurs sont évoqués.",
+    "category": "piège",
+    "language": "fr"
+  },
+
+  {
+    "id": "6",
+    "question": "How does Reggie Miller's playoff efficiency compare to Michael Jordan's according to the data presented?",
+    "ground_truth": "Reggie Miller has a higher relative True Shooting percentage (112) than Michael Jordan (106), indicating greater scoring efficiency relative to era.",
+    "category": "moyenne",
+    "language": "en"
+  },
+
+ {
+    "id": "7",
+    "question": "Quels joueurs sont mentionnés comme ayant une efficacité similaire à Reggie Miller dans les playoffs?",
+    "ground_truth": "Kawhi Leonard est mentionné comme le joueur qui s'approche le plus de Reggie Miller avec un rTS% de 112, suivi de Stephen Curry et Jerry West à 110. Aucun autre joueur de la liste n'atteint le niveau d'efficacité de Miller.",
+    "category": "simple",
+    "language": "fr"
+  },
+
+   {
+    "id": "8",
+    "question": "Analysez comment le style de jeu de Reggie Miller, basé sur les mouvements sans ballon et les écrans, a affecté sa capacité à être une véritable option offensive principale comparé à des joueurs comme Jordan ou Kobe.",
+    "ground_truth": "Les discussions soulignent que bien que Reggie Miller soit extrêmement efficace, son jeu était limité par sa dépendance aux écrans et ses difficultés en isolation. Contrairement à Jordan ou Kobe qui pouvaient créer leur propre tir en 1-contre-1, Miller devait être libéré par des écrans, ce qui le rendait plus facile à neutraliser par les défenses en éliminant ses espaces. Cela expliquerait pourquoi il n'a jamais été un scoreur de très haut volume.",
+    "category": "complexe",
+    "language": "fr"
+  },
+
+  {"id": "r4_9",
+    "question": "What is the central question of the thread?",
+    "ground_truth": "Whether an NBA team reached the Finals without home-court advantage beforehand.",
+    "category": "simple",
+    "language": "en"
+  },
+{
+    "id": "r4_10",
+    "question": "Which historical team is often misunderstood in this context?",
+    "ground_truth": "The 1995 Houston Rockets.",
+    "category": "moyenne",
+    "language": "en"
+  },
+
+  {
+    "id": "11",
+    "question": "Quel est le principal problème des Pistons identifié dans les commentaires?",
+    "ground_truth": "Le principal problème des Pistons est le manque de second marqueur fiable pour soulager Cade Cunningham, surtout avec Jaden Ivey blessé. Ils dépendent trop de Dennis Schroeder, Malik Beasley et Tobias Harris comme options secondaires.",
+    "category": "simple",
+    "language": "fr"
+  },
+
+  {
+    "id": "12",
+    "question": "Quel est le nombre total de points (PTS) marqués par Shai Gilgeous-Alexander ?",
+    "ground_truth": "2485.0",
+    "category": "simple",
+    "language": "fr"
+  },
+
+  {
+    "id": "13",
+    "question": "Among the listed players, who has the highest field goal percentage (FG%) and what is that value?",
+    "ground_truth": "Jarrett Allen has the highest FG% at 70.6%.",
+    "category": "moyenne",
+    "language": "en"
+},
+
+ {
+    "id": "14",
+    "question": "Identifiez le joueur avec le plus grand nombre de triple-doubles (TD3) et donnez son nombre de TD3.",
+    "ground_truth": "Nikola Jokić a le plus grand nombre de triple-doubles (TD3) avec 34.0",
+    "category": "complexe",
+    "language": "fr"
+  },
+
+   {
+    "id": "r5_15",
+    "question": "Regular season data guarantees correct answers without context.",
+    "ground_truth": "False.",
+    "category": "piège",
+    "language": "en"
+  },
+
+  {
+    "id": "16",
+    "question": "What aspect of Julius Randle's game has been particularly impressive in the playoffs?",
+    "ground_truth": "Julius Randle's bully ball offense has been particularly impressive, as he uses his physicality effectively against defenders like LeBron James and makes correct reads when double-teams come.",
+    "category": "simple",
+    "language": "en"
+  },
+
+  {
+    "id": "r4_17",
+    "question": "Pourquoi la variance est-elle plus faible en NBA qu’en NHL ?",
+    "ground_truth": "Le scoring fréquent réduit l’aléatoire.",
+    "category": "complexe",
+    "language": "fr"
+  },
+  {
+    "id": "r5_18",
+    "question": "Quel est le principal risque d’un mauvais grounding statistique ?",
+    "ground_truth": "L’hallucination de chiffres.",
+    "category": "moyenne",
+    "language": "fr"
+  },
+
+  {
+    "id": "19",
+    "question": "Quelle équipe de la NHL est mentionnée comme exemple dans la discussion sur l'avantage du terrain?",
+    "ground_truth": "Les Edmonton Oilers sont mentionnés comme exemple d'équipe qui a atteint la finale de la NHL sans avantage du terrain pendant les trois premiers tours, avant de l'avoir en finale.",
+    "category": "simple",
+    "language": "fr"
+  }
+]
