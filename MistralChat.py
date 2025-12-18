@@ -1,10 +1,16 @@
-# MistralChat.py (version RAG)
+# MistralChat.py (version HYBRIDE)
 import streamlit as st
 import os
 import logging
 from mistralai.client import MistralClient
 from mistralai.models.chat_completion import ChatMessage
 from dotenv import load_dotenv
+import time
+
+# --- Router & SQL Tool ---
+
+from scripts.sql_tool import NBADataTool, execute_sql_query_standalone
+from scripts.router import QuestionRouter, HybridQueryExecutor
 
 # --- Importations depuis vos modules ---
 try:
@@ -70,6 +76,17 @@ def get_vector_store_manager():
             return None
         
 vector_store_manager = get_vector_store_manager()
+
+# === Initialisation du SQL Tool, Router, et Exécuteur Hybride ===
+
+sql_tool = NBADataTool(client)
+router = QuestionRouter(client)
+hybrid_executor = HybridQueryExecutor(
+    mistral_client=client,
+    vector_store_manager=vector_store_manager,
+    sql_tool=sql_tool
+)
+
 
 # --- Prompt Système pour RAG ---
 # Adaptez ce prompt selon vos besoins
@@ -141,11 +158,77 @@ for message in st.session_state.messages:
 # Zone de saisie utilisateur
 if prompt := st.chat_input(f"Posez votre question sur la {NAME}..."):
     # 1. Ajouter et afficher le message de l'utilisateur
+    startq_timing = time.time()
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.write(prompt)
-    
-    with logfire.span("rag_pipeline") as span:
+
+        # === ROUTING INTELLIGENT  ===
+    start_routing = time.time()
+    decision = router.route_question(prompt)
+    routing_duration= time.time() - start_routing
+    logfire.info("router_latency", seconds=routing_duration)
+
+    # Log
+    logging.info(
+        f"Routing decision = {decision.strategy} "
+        f"(conf={decision.confidence:.2f}) | reasoning = {decision.reasoning}"
+    )
+
+    # --- SQL-ONLY ---
+
+    if decision.strategy == "sql_only":
+        with st.chat_message("assistant"):
+            message_placeholder = st.empty()
+            message_placeholder.text("Analyse SQL en cours...")
+            start_sql = time.time()
+            sql_response = sql_tool.run(prompt)
+            sql_latency = time.time() - start_sql
+            logfire.info("sql_latency", seconds=sql_latency)
+
+            cleaned_response = "\n".join(
+                line for line in sql_response.split("\n")
+                if not line.strip().startswith("Requête SQL exécutée")
+                and not line.strip().startswith("SELECT")
+                )
+
+            st.session_state.messages.append({"role": "assistant", "content": cleaned_response})
+            if "Données:" in cleaned_response:
+                header, data = cleaned_response.split("Données:", 1)
+                message_placeholder.write(header)
+                st.code(data.strip())
+            else:
+                message_placeholder.write(cleaned_response)
+        total_duration_wsql = time.time() - startq_timing
+        logfire.info("mistral_response_timing", seconds=total_duration_wsql)
+        st.stop()
+
+    # --- RAG-ONLY ---
+    if decision.strategy == "rag_only":
+        # On laisse continuer vers le pipeline RAG actuel (ne rien changer)
+        pass
+
+    # --- HYBRID (SQL + RAG + Synthèse) ---
+    if decision.strategy == "hybrid":
+        with st.chat_message("assistant"):
+            message_placeholder = st.empty()
+            message_placeholder.text("Analyse hybride (SQL + RAG) en cours...")
+            start_hybride = time.time()
+            hybrid_response = hybrid_executor.execute(
+                question=prompt,
+                decision=decision,
+                search_k=SEARCH_K
+            )
+            hybrid_latency = time.time() - start_hybride
+            logfire.info("hybrid_latency", seconds=hybrid_latency)
+
+            st.session_state.messages.append({"role": "assistant", "content": hybrid_response})
+            message_placeholder.write(hybrid_response)
+        total_duration_whybrid = time.time() - startq_timing
+        logfire.info("mistral_response_timing", seconds=total_duration_whybrid)
+        st.stop()
+
+    with logfire.span("full_rag_pipeline") as span:
 
         # Log de la question utilisateur
         span.set_attribute("user_question", prompt)
@@ -163,7 +246,10 @@ if prompt := st.chat_input(f"Posez votre question sur la {NAME}..."):
     # 3. Rechercher le contexte dans le Vector Store
         try:
             logging.info(f"Recherche de contexte pour la question: '{prompt}' avec k={SEARCH_K}")
+            start_rag = time.time()
             search_results = vector_store_manager.search(prompt, k=SEARCH_K)
+            rag_latency = time.time() - start_rag
+            logfire.info("rag_latency", seconds=rag_latency)
             span.set_attribute("chunks_found", len(search_results))
             logging.info(f"{len(search_results)} chunks trouvés dans le Vector Store.")
         except Exception as e:
@@ -210,6 +296,9 @@ if prompt := st.chat_input(f"Posez votre question sur la {NAME}..."):
 
         # Affichage de la réponse complète
         message_placeholder.write(response_content)
+        
+    response_duration = time.time() - startq_timing
+    logfire.info("mistral_response_timing", seconds=response_duration)
 
     # 7. Ajouter la réponse de l'assistant à l'historique (pour affichage UI)
     st.session_state.messages.append({"role": "assistant", "content": response_content})

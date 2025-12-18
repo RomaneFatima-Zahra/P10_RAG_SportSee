@@ -1,0 +1,6 @@
+,faithfulness,faithfulness,context_precision,context_recall,answer_correctness,duration
+,mean,count,mean,mean,mean,mean
+strategy,,,,,,
+HYBRID,0.792,6,0.52,0.761,0.524,12.393
+RAG_ONLY,0.982,5,0.617,0.6,0.462,4.481
+SQL_ONLY,1.0,11,0.545,0.53,0.386,3.624

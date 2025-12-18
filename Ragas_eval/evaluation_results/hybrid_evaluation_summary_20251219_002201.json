@@ -1,0 +1,77 @@
+{
+  "timestamp": "20251219_002201",
+  "model": "mistral-small-latest",
+  "evaluation_type": "HYBRID (RAG + SQL + Router)",
+  "num_questions": 22,
+  "overall_scores": {
+    "faithfulness": 0.9390598309309074,
+    "context_precision": 0.5547979797535016,
+    "context_recall": 0.6090909090909091,
+    "answer_correctness": 0.4399666471887447
+  },
+  "category_breakdown": {
+    "('faithfulness', 'mean')": {
+      "Excel": 1.0,
+      "Mixte": 0.794,
+      "Reddit": 0.914,
+      "piège": 1.0
+    },
+    "('context_precision', 'mean')": {
+      "Excel": 0.6,
+      "Mixte": 0.531,
+      "Reddit": 0.556,
+      "piège": 0.375
+    },
+    "('context_recall', 'mean')": {
+      "Excel": 0.583,
+      "Mixte": 0.725,
+      "Reddit": 0.611,
+      "piège": 0.5
+    },
+    "('answer_correctness', 'mean')": {
+      "Excel": 0.407,
+      "Mixte": 0.577,
+      "Reddit": 0.496,
+      "piège": 0.19
+    }
+  },
+  "strategy_breakdown": {
+    "('faithfulness', 'mean')": {
+      "HYBRID": 0.792,
+      "RAG_ONLY": 0.982,
+      "SQL_ONLY": 1.0
+    },
+    "('faithfulness', 'count')": {
+      "HYBRID": 6,
+      "RAG_ONLY": 5,
+      "SQL_ONLY": 11
+    },
+    "('context_precision', 'mean')": {
+      "HYBRID": 0.52,
+      "RAG_ONLY": 0.617,
+      "SQL_ONLY": 0.545
+    },
+    "('context_recall', 'mean')": {
+      "HYBRID": 0.761,
+      "RAG_ONLY": 0.6,
+      "SQL_ONLY": 0.53
+    },
+    "('answer_correctness', 'mean')": {
+      "HYBRID": 0.524,
+      "RAG_ONLY": 0.462,
+      "SQL_ONLY": 0.386
+    },
+    "('duration', 'mean')": {
+      "HYBRID": 12.393,
+      "RAG_ONLY": 4.481,
+      "SQL_ONLY": 3.624
+    }
+  },
+  "avg_duration_sec": 6.210332642902028,
+  "total_eval_duration_sec": 136.63193798065186,
+  "strategy_distribution": {
+    "SQL_ONLY": 11,
+    "HYBRID": 6,
+    "RAG_ONLY": 5
+  }
+}
