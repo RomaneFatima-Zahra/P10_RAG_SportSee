@@ -1,7 +1,0 @@
-,faithfulness,context_precision,context_recall,answer_correctness
-,mean,mean,mean,mean
-category,,,,
-complexe,0.744,0.333,0.333,0.479
-moyenne,0.73,0.183,0.429,0.418
-piège,1.0,0.375,0.5,0.542
-simple,0.957,0.553,0.6,0.549

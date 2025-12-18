@@ -1,0 +1,7 @@
+,faithfulness,context_precision,context_recall,answer_correctness
+,mean,mean,mean,mean
+category,,,,
+Excel,0.775,0.1,0.1,0.343
+Mixte,0.974,0.612,0.483,0.581
+Reddit,0.967,0.556,0.611,0.578
+piège,0.938,0.375,0.5,0.696

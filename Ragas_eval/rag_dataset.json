@@ -1,173 +1,163 @@
 [
-  {
-    "id": "000",
-    "question": "Quelle est l'équipe avec le plus grand nombre de joueurs ?",
-    "ground_truth": "L'équipe ayant le plus grand nombre de joueurs est Philadelphia 76ers avec 23 joueurs",
-    "category": "simple",
-    "language" : "fr"
-  },
-
-  {
-    "id": "001",
-    "question": " combien de joueurs ont plus de 2000 points au total ?",
-    "ground_truth": "seulement 4 joueurs ont plus de 2000 points au total : Shai Gilgeous-Alexander, Anthony Edwards, Nikola Jokić, et Giannis Antetokounmpo.",
-    "category": "moyenne",
-    "language" : "fr"
-  },
-  
-  {
-    "id": "1",
-    "question": "Which players are highlighted as impressive performers in the playoffs according to the discussion?",
-    "ground_truth": "The discussion highlights Paolo Banchero, Franz Wagner, Anthony Edwards, and Julius Randle as particularly impressive performers in the playoffs.",
-    "category": "simple",
-    "language": "en"
-  },
-
-   {
-    "id": "2",
-    "question": "Pourquoi les Magic d'Orlando sont-ils critiqués malgré leurs performances impressionnantes selon certains commentateurs?",
-    "ground_truth": "Certains commentateurs critiquent les Magic parce qu'ils ont un jeu offensif très limité (qualifié de 'terrorisme basketball'), manquent cruellement de tireurs à trois points, et compensent par un jeu physique parfois dangereux qui a blessé plusieurs joueurs des Celtics.",
-    "category": "moyenne",
-    "language": "fr"
+    {
+        "id": "Q1",
+        "question": "Quelle est l'équipe avec le plus grand nombre de joueurs ?",
+        "ground_truth": "L'équipe ayant le plus grand nombre de joueurs est Philadelphia 76ers avec 23 joueurs",
+        "category": "Excel",
+        "language" : "fr"
+    },
     
-  },
+    {
+        "id": "Q2",
+        "question": "Combien de points Anthony Edwards a marqué cette saison ?" ,
+        "ground_truth": "Anthony Edwards a marqué 2180 points",
+        "category":"Excel",
+        "language" :"fr"
+    },
+    {
+        "id": "Q3",
+        "question": "Quelle est la moyenne de points des Minnesota Timberwolves ?",
+        "ground_truth": "La moyenne de points des Minnesota Timberwolves est de 476,15 points",
+        "category":"Excel",
+        "language" :"fr"
+    },
+    {
+        "id": "Q4",
+        "question": " combien de joueurs ont plus de 2000 points au total ?",
+        "ground_truth": "seulement 4 joueurs ont plus de 2000 points au total : Shai Gilgeous-Alexander, Anthony Edwards, Nikola Jokić, et Giannis Antetokounmpo.",
+        "category": "Excel",
+        "language" : "fr"
+    },
 
-  {
-    "id": "r3_3",
-    "question": "Which player is highlighted as extremely efficient in NBA playoffs?",
-    "ground_truth": "Reggie Miller.",
-    "category": "simple",
-    "language": "en"
-  },
+    {
+        "id": "Q5",
+        "question": "Quel est le nombre total de points (PTS) marqués par Shai Gilgeous-Alexander ?",
+        "ground_truth": "2485.0",
+        "category": "Excel",
+        "language": "fr"
+    },
+    {
+        "id": "Q6",
+        "question": "Among the listed players, who has the highest field goal percentage (FG%) and what is that value?",
+        "ground_truth": "Jarrett Allen has the highest FG% at 70.6%.",
+        "category": "Excel",
+        "language": "en"
+    },
+    {
+        "id": "Q7",
+        "question": "Identifiez le joueur avec le plus grand nombre de triple-doubles (TD3) et donnez son nombre de TD3.",
+        "ground_truth": "Nikola Jokić a le plus grand nombre de triple-doubles (TD3) avec 34.0",
+        "category": "Excel",
+        "language": "fr"
+    },
+    {
+        "id": "Q8",
+        "question": "Which players are highlighted as impressive performers in the playoffs according to the discussion?",
+        "ground_truth": "The discussion highlights Paolo Banchero, Franz Wagner, Anthony Edwards, and Julius Randle as particularly impressive performers in the playoffs.",
+        "category": "Reddit",
+        "language": "en"
+    },
+    {
+        "id": "Q9",
+        "question": "Pourquoi les Magic d'Orlando sont-ils critiqués malgré leurs performances impressionnantes selon certains commentateurs?",
+        "ground_truth": "Certains commentateurs critiquent les Magic parce qu'ils ont un jeu offensif très limité (qualifié de 'terrorisme basketball'), manquent cruellement de tireurs à trois points, et compensent par un jeu physique parfois dangereux qui a blessé plusieurs joueurs des Celtics.",
+        "category": "Reddit",
+        "language": "fr"
+    },
+    {
+        "id": "Q10",
+        "question": "La baisse d’audience est expliquée par une seule cause unique.",
+        "ground_truth": "Faux. Plusieurs facteurs sont évoqués.",
+        "category": "piège",
+        "language": "fr"
+    },
+    {
+        "id": "Q11",
+        "question": "Quels joueurs sont mentionnés comme ayant une efficacité similaire à Reggie Miller dans les playoffs?",
+        "ground_truth": "Kawhi Leonard est mentionné comme le joueur qui s'approche le plus de Reggie Miller avec un rTS% de 112, suivi de Stephen Curry et Jerry West à 110. Aucun autre joueur de la liste n'atteint le niveau d'efficacité de Miller.",
+        "category": "Reddit",
+        "language": "fr"
+    },
+    {
+        "id": "Q12",
+        "question": "Analysez comment le style de jeu de Reggie Miller, basé sur les mouvements sans ballon et les écrans, a affecté sa capacité à être une véritable option offensive principale comparé à des joueurs comme Jordan ou Kobe.",
+        "ground_truth": "Les discussions soulignent que bien que Reggie Miller soit extrêmement efficace, son jeu était limité par sa dépendance aux écrans et ses difficultés en isolation. Contrairement à Jordan ou Kobe qui pouvaient créer leur propre tir en 1-contre-1, Miller devait être libéré par des écrans, ce qui le rendait plus facile à neutraliser par les défenses en éliminant ses espaces. Cela expliquerait pourquoi il n'a jamais été un scoreur de très haut volume.",
+        "category": "Reddit",
+        "language": "fr"
+    },
+    {
+        "id": "Q13",
+        "question": "What aspect of Julius Randle's game has been particularly impressive in the playoffs?",
+        "ground_truth": "Julius Randle's bully ball offense has been particularly impressive, as he uses his physicality effectively against defenders like LeBron James and makes correct reads when double-teams come.",
+        "category": "Reddit",
+        "language": "en"
+    },
+    {
+        "id": "Q14",
+        "question": "Quelle équipe de la NHL est mentionnée comme exemple dans la discussion sur l'avantage du terrain?",
+        "ground_truth": "Les Edmonton Oilers sont mentionnés comme exemple d'équipe qui a atteint la finale de la NHL sans avantage du terrain pendant les trois premiers tours, avant de l'avoir en finale.",
+        "category": "Reddit",
+        "language": "fr"
+    },
+    {
+        "id": "Q15",
+        "question": "Comparing Giannis Antetokounmpo's statistical performance with fan opinions from Reddit, is he living up to his reputation this season?",
+        "ground_truth": "Statistically, Giannis is performing at an elite level: 2037 total points in 67 games (30.4 PPG), 60.1% FG percentage, and 34.6% usage rate - the highest USG% after James Wiseman's small sample. However, Reddit discussions are more mixed. While he's recognized as a top player, there are concerns about his playoff performances and team success. Users note the Bucks have struggled (40-27 record), and some feel Giannis hasn't been able to carry the team as effectively without sufficient help. The general consensus is that Giannis remains an incredible talent individually, but questions remain about whether he can lead the Bucks to championship success, especially with the team's defensive and roster construction issues. His regular season stats are elite, but the broader context suggests he needs more support to achieve championship-level success.",
+        "category": "Mixte",
+        "language": "en"
+    },
+    {
+        "id": "Q16",
+        "question": "Based on both fan discussions and statistics, is Shai Gilgeous-Alexander's scoring efficiency justified or is he primarily a 'foul merchant' as some Reddit users claim?",
+        "ground_truth": "Based on the data, SGA's efficiency is genuinely elite. He leads the league with 2485 points in 76 games (32.7 PPG) with a shooting percentage of 51.9% FG. While Reddit discussions mention he gets to the free throw line frequently (600 FTM), his efficiency isn't solely dependent on free throws - his field goal percentage of 51.9% is excellent for a guard with high volume. Reddit users note he has more drives than any player in the last 5 years, and his free throw rate is average compared to other MVPs. The criticism appears somewhat overblown, as top scorers historically get to the line frequently. His True Shooting percentage (TS%) of 61.5% confirms he's genuinely efficient, not just a foul merchant.",
+        "category": "Mixte",
+         "language": "en"
+    },
+    {
+         "id": "Q17",
+        "question": "Which team has the best overall win-loss record based on the player data?",
+        "ground_truth": "Based on the player data, the Boston Celtics have the best win-loss record with 53 wins and 19 losses (as shown in Jayson Tatum's player row). The Oklahoma City Thunder have the second-best record with 63 wins and 13 losses (as shown in Shai Gilgeous-Alexander's row), giving them actually a better record. So OKC Thunder has the best record at 63-13.",
+        "category": "Excel",
+        "language": "en"
+      
+    },
+    {
+         "id": "Q18",
+        "question": "Which player has the highest field goal percentage (FG%) among players who played at least 50 games?",
+        "ground_truth": "Jaxson Hayes from the Lakers has the highest FG% at 72.2% among players who played at least 50 games, with 162 field goals made out of 224 attempts in 56 games played.",
+        "category": "Excel",
+         "language": "en"
+    },
 
-  { "id": "r2_4",
-    "question": "Quel facteur est souvent accusé de faire baisser les audiences ?",
-    "ground_truth": "Les petits marchés et l’absence de superstars médiatiques.",
-    "category": "simple",
-    "language": "fr"
-  },
-{
-    "id": "r2_20",
-    "question": "What marketing strategy of the NBA is criticized?",
-    "ground_truth": "Overemphasis on individual stars instead of teams.",
-    "category": "moyenne",
-    "language": "en"
-  },
+    {
+        "id": "Q19",
+        "question": "Quel joueur a le meilleur pourcentage de lancers francs (FT%) parmi ceux qui ont tenté au moins 200 lancers francs ?",
+        "ground_truth": "Parmi les joueurs ayant tenté au moins 200 lancers francs, Stephen Curry des Warriors a le meilleur pourcentage avec 92.3% (288 FTM sur 312 FTA en 66 matchs).",
+        "category": "Excel",
+        "language": "fr"
+    },
 
-  {
-    "id": "r2_5",
-    "question": "La baisse d’audience est expliquée par une seule cause unique.",
-    "ground_truth": "Faux. Plusieurs facteurs sont évoqués.",
-    "category": "piège",
-    "language": "fr"
-  },
+    {
+        "id": "Q20",
+        "question": "The Pacers surprised many by reaching the conference finals. Based on statistical evidence from the Excel data and fan reactions from Reddit, what makes them competitive despite being considered underdogs?",
+        "ground_truth": "The Pacers' competitiveness comes from several factors. Statistically, they have strong contributors: Pascal Siakam provides solid all-around play, Tyrese Haliburton facilitates the offense effectively, and they play with a fast pace that creates more possessions. Reddit discussions emphasize they're fun to watch, play team basketball rather than relying on a single star, and have consistently exceeded expectations (beat the Bucks and Knicks despite being underdogs, upset the Cavs when nobody picked them). Users note the Pacers have been 'preparing and practicing this all year' and have strong coaching from Rick Carlisle. Their success isn't reflected in individual superstar stats but in their collective team play and ability to dictate pace, making them a difficult matchup despite not having the biggest market or the most recognizable stars.",
+        "category":"Mixte",
+        "language": "en"
+    },
 
-  {
-    "id": "6",
-    "question": "How does Reggie Miller's playoff efficiency compare to Michael Jordan's according to the data presented?",
-    "ground_truth": "Reggie Miller has a higher relative True Shooting percentage (112) than Michael Jordan (106), indicating greater scoring efficiency relative to era.",
-    "category": "moyenne",
-    "language": "en"
-  },
+    {
+        "id": "Q21",
+        "question":"Compare les performances de Julius Randle et les opinions sur lui",
+        "ground_truth":"Julius Randle affiche des performances solides et équilibrées (18,7 points, 7,1 rebonds, 4,7 passes par match), avec une efficacité correcte aux tirs (48,5 % au total) et une amélioration notable à trois points (34,4 %, au-dessus de sa moyenne en carrière). Son impact global se traduit aussi par un plus-minus positif. Les opinions exprimées soulignent majoritairement une réévaluation positive de son jeu : son efficacité offensive, son tir extérieur en progrès et son jeu physique sont perçus comme des atouts dans le système des Timberwolves.",
+        "category": "Mixte",
+        "language" :"fr"
+    },
 
- {
-    "id": "7",
-    "question": "Quels joueurs sont mentionnés comme ayant une efficacité similaire à Reggie Miller dans les playoffs?",
-    "ground_truth": "Kawhi Leonard est mentionné comme le joueur qui s'approche le plus de Reggie Miller avec un rTS% de 112, suivi de Stephen Curry et Jerry West à 110. Aucun autre joueur de la liste n'atteint le niveau d'efficacité de Miller.",
-    "category": "simple",
-    "language": "fr"
-  },
-
-   {
-    "id": "8",
-    "question": "Analysez comment le style de jeu de Reggie Miller, basé sur les mouvements sans ballon et les écrans, a affecté sa capacité à être une véritable option offensive principale comparé à des joueurs comme Jordan ou Kobe.",
-    "ground_truth": "Les discussions soulignent que bien que Reggie Miller soit extrêmement efficace, son jeu était limité par sa dépendance aux écrans et ses difficultés en isolation. Contrairement à Jordan ou Kobe qui pouvaient créer leur propre tir en 1-contre-1, Miller devait être libéré par des écrans, ce qui le rendait plus facile à neutraliser par les défenses en éliminant ses espaces. Cela expliquerait pourquoi il n'a jamais été un scoreur de très haut volume.",
-    "category": "complexe",
-    "language": "fr"
-  },
-
-  {"id": "r4_9",
-    "question": "What is the central question of the thread?",
-    "ground_truth": "Whether an NBA team reached the Finals without home-court advantage beforehand.",
-    "category": "simple",
-    "language": "en"
-  },
-{
-    "id": "r4_10",
-    "question": "Which historical team is often misunderstood in this context?",
-    "ground_truth": "The 1995 Houston Rockets.",
-    "category": "moyenne",
-    "language": "en"
-  },
-
-  {
-    "id": "11",
-    "question": "Quel est le principal problème des Pistons identifié dans les commentaires?",
-    "ground_truth": "Le principal problème des Pistons est le manque de second marqueur fiable pour soulager Cade Cunningham, surtout avec Jaden Ivey blessé. Ils dépendent trop de Dennis Schroeder, Malik Beasley et Tobias Harris comme options secondaires.",
-    "category": "simple",
-    "language": "fr"
-  },
-
-  {
-    "id": "12",
-    "question": "Quel est le nombre total de points (PTS) marqués par Shai Gilgeous-Alexander ?",
-    "ground_truth": "2485.0",
-    "category": "simple",
-    "language": "fr"
-  },
-
-  {
-    "id": "13",
-    "question": "Among the listed players, who has the highest field goal percentage (FG%) and what is that value?",
-    "ground_truth": "Jarrett Allen has the highest FG% at 70.6%.",
-    "category": "moyenne",
-    "language": "en"
-},
-
- {
-    "id": "14",
-    "question": "Identifiez le joueur avec le plus grand nombre de triple-doubles (TD3) et donnez son nombre de TD3.",
-    "ground_truth": "Nikola Jokić a le plus grand nombre de triple-doubles (TD3) avec 34.0",
-    "category": "complexe",
-    "language": "fr"
-  },
-
-   {
-    "id": "r5_15",
-    "question": "Regular season data guarantees correct answers without context.",
-    "ground_truth": "False.",
-    "category": "piège",
-    "language": "en"
-  },
-
-  {
-    "id": "16",
-    "question": "What aspect of Julius Randle's game has been particularly impressive in the playoffs?",
-    "ground_truth": "Julius Randle's bully ball offense has been particularly impressive, as he uses his physicality effectively against defenders like LeBron James and makes correct reads when double-teams come.",
-    "category": "simple",
-    "language": "en"
-  },
-
-  {
-    "id": "r4_17",
-    "question": "Pourquoi la variance est-elle plus faible en NBA qu’en NHL ?",
-    "ground_truth": "Le scoring fréquent réduit l’aléatoire.",
-    "category": "complexe",
-    "language": "fr"
-  },
-  {
-    "id": "r5_18",
-    "question": "Quel est le principal risque d’un mauvais grounding statistique ?",
-    "ground_truth": "L’hallucination de chiffres.",
-    "category": "moyenne",
-    "language": "fr"
-  },
-
-  {
-    "id": "19",
-    "question": "Quelle équipe de la NHL est mentionnée comme exemple dans la discussion sur l'avantage du terrain?",
-    "ground_truth": "Les Edmonton Oilers sont mentionnés comme exemple d'équipe qui a atteint la finale de la NHL sans avantage du terrain pendant les trois premiers tours, avant de l'avoir en finale.",
-    "category": "simple",
-    "language": "fr"
-  }
+    {
+        "id": "Q22",
+        "question": "Centers and big men always have the highest rebounding percentages (REB%).",
+        "ground_truth": "Mostly true but with nuance: While centers like Jonas Valančiūnas (20.3 REB%) and Alperen Sengun (15.3 REB%) have high percentages, some guards/forwards like Domantas Sabonis (19.9 REB%) and Nikola Jokić (17.3 REB%) also have elite rebounding percentages. The statement oversimplifies position-based assumptions.",
+        "category": "piège",
+        "language": "en"
+    }
 ]
