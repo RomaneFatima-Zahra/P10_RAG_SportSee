@@ -195,6 +195,7 @@ RÉPONSE:"""
             test_questions = self.load_test_questions_from_json(Dataset_path)
 
         logging.info(f"Début de l'évaluation avec {len(test_questions)} questions...")
+        eval_start_time = time.time()  # <-- début du timer global
         
         eval_data = {
             "question": [],
@@ -202,7 +203,8 @@ RÉPONSE:"""
             "answer": [],
             "ground_truth": [],
             "id": [],
-            "language": []
+            "language": [],
+            "duration": []
         }
         
         metadata = {
@@ -212,6 +214,7 @@ RÉPONSE:"""
         
         for i, test_q in enumerate(test_questions, 1):
             logging.info(f"Évaluation question {i}/{len(test_questions)}: {test_q['question'][:60]}...")
+            q_start = time.time()
              
             # Ajouter un délai pour éviter le rate limiting
             if i > 1:
@@ -221,6 +224,9 @@ RÉPONSE:"""
                 question=test_q["question"],
                 ground_truth=test_q.get("ground_truth")
             )
+            q_end = time.time()
+            q_duration = q_end - q_start
+            logging.info(f"⏱️ Temps de réponse pour cette question est de : {q_duration:.2f} sec")
             
             eval_data["question"].append(result["question"])
             eval_data["contexts"].append(result["contexts"])
@@ -229,7 +235,10 @@ RÉPONSE:"""
             eval_data["id"].append(test_q.get("id"))
             eval_data["language"].append(test_q.get("language", "unknown"))
             metadata["categories"].append(test_q.get("category", "unknown"))
-        
+            eval_data["duration"].append(q_duration)
+
+        eval_end_time = time.time()
+        total_eval_duration = eval_end_time - eval_start_time  # <-- temps total
         dataset = Dataset.from_dict(eval_data)
         
         metrics = [
@@ -262,6 +271,7 @@ RÉPONSE:"""
             
             results_df = results.to_pandas()
             results_df["category"] = metadata["categories"]
+            results_df["duration"] = eval_data["duration"]
             
             category_stats = results_df.groupby("category").agg({
                 "faithfulness": ["mean"],
@@ -270,7 +280,7 @@ RÉPONSE:"""
                 "answer_correctness": ["mean"]
             }).round(3)
             
-            self._save_results(results_df, category_stats)
+            self._save_results(results_df, category_stats, total_eval_duration)
             
             logging.info("Évaluation terminée avec succès!")
             
@@ -280,7 +290,8 @@ RÉPONSE:"""
                 "overall_scores": results_df[
                     ["faithfulness", "context_precision", 
                      "context_recall", "answer_correctness"]
-                ].mean().to_dict()
+                ].mean().to_dict(),
+                "total_eval_duration_sec": total_eval_duration
             }
             
         except Exception as e:
@@ -291,11 +302,16 @@ RÉPONSE:"""
         self,
         results_df: pd.DataFrame,
         category_stats: pd.DataFrame,
+        total_eval_duration: float
     ):
+        logging.info("=" * 50)
+        logging.info(f"⏱️ Temps total d'exécution de l'évaluation : {total_eval_duration:.2f} sec")
+        logging.info("=" * 50)
+
         """Sauvegarde les résultats de l'évaluation dans Ragas_eval/evaluation_results."""
         # Construire le chemin vers Ragas_eval/evaluation_results
 
-        output_path = Root_path / "Ragas_eval" / "1st_evaluation_results"
+        output_path = Root_path / "Ragas_eval" / "evaluation_results"
         output_path.mkdir(parents=True, exist_ok=True)  # crée le dossier si inexistant
         
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -322,6 +338,8 @@ RÉPONSE:"""
                  "context_recall", "answer_correctness"]
             ].mean().to_dict(),
             "category_breakdown": {str(k): v for k, v in category_stats.to_dict().items()},
+             "avg_duration_sec": results_df["duration"].mean(),
+             "total_eval_duration_sec": total_eval_duration  # <-- temps total ajouté
     }
         
         summary_file = output_path / f"evaluation_summary_{timestamp}.json"
@@ -350,7 +368,9 @@ def main():
             print(f"{metric:25s}: {score:.3f}")
         print("="*60)
         
-        print("\nLes résultats détaillés ont été sauvegardés dans '1st_evaluation_results/'")
+        print("\nLes résultats détaillés ont été sauvegardés dans 'evaluation_results/'")
+        print(f"⏱️ Temps total d'évaluation : {results['total_eval_duration_sec']:.2f} sec")
+
         
     except Exception as e:
         logging.error(f"Erreur lors de l'exécution de l'évaluation: {e}")

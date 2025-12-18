@@ -38,3 +38,12 @@ DATABASE_URL = f"sqlite:///{DATABASE_FILE}" # URL pour SQLAlchemy
 # --- Configuration de l'Application ---
 APP_TITLE = "NBA Analyst AI"
 NAME = "NBA" # Nom à personnaliser dans l'interface
+
+# PostgreSQL Configuration 
+DB_CONFIG = {
+    'host': ('localhost'),
+    'port': int(5432),
+    'user': ('fatiza'),
+    'password': ('1234'),
+    'database': ('nba_stats')
+}
