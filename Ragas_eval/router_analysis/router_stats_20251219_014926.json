@@ -1,0 +1,42 @@
+{
+  "total_questions": 22,
+  "strategy_distribution": {
+    "sql_only": 11,
+    "hybrid": 6,
+    "rag_only": 5
+  },
+  "strategy_percentages": {
+    "sql_only": 50.0,
+    "hybrid": 27.27,
+    "rag_only": 22.73
+  },
+  "avg_confidence_by_strategy": {
+    "hybrid": 0.917,
+    "rag_only": 0.86,
+    "sql_only": 0.95
+  },
+  "category_distribution": {
+    "Excel": {
+      "hybrid": 0,
+      "rag_only": 0,
+      "sql_only": 10
+    },
+    "Mixte": {
+      "hybrid": 4,
+      "rag_only": 0,
+      "sql_only": 0
+    },
+    "Reddit": {
+      "hybrid": 2,
+      "rag_only": 4,
+      "sql_only": 0
+    },
+    "piège": {
+      "hybrid": 0,
+      "rag_only": 1,
+      "sql_only": 1
+    }
+  },
+  "low_confidence_questions": 0,
+  "high_confidence_questions": 22
+}
