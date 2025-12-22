@@ -148,33 +148,32 @@ Ce scriptcorrespond à l’orchestration globale du système. iL s'agit d'un rou
 
 ```mermaid
 flowchart TD
-    U[Question utilisateur] --> R[Question Router\n(Analyse de l’intention)]
+    U[Question utilisateur] --> R[Router intelligent]
 
-    %% --- RAG ONLY ---
-    R -->|RAG ONLY| V1[Recherche vectorielle\n(FAISS + Embeddings)]
-    V1 --> C1[Contexte textuel\n(Discussions Reddit)]
-    C1 --> G1[LLM – Génération]
-    G1 --> F1[Réponse finale\n(Qualitative / contextuelle)]
+    %% RAG ONLY
+    R -->|RAG_ONLY| V[Recherche vectorielle FAISS]
+    V --> C[Chunks textuels]
+    C --> L1[LLM]
+    L1 --> F1[Réponse qualitative]
 
-    %% --- SQL ONLY ---
-    R -->|SQL ONLY| S2[SQL Tool\n(NL → SQL)]
+    %% SQL ONLY
+    R -->|SQL_ONLY| S[SQL Tool]
+    S --> DB[(PostgreSQL)]
+    DB --> D[Données chiffrées]
+    D --> L2[LLM]
+    L2 --> F2[Réponse factuelle]
+
+    %% HYBRID
+    R -->|HYBRID| S2[SQL Tool]
+    R -->|HYBRID| V2[FAISS]
+
     S2 --> DB2[(PostgreSQL)]
-    DB2 --> D2[Résultats SQL\n(Statistiques)]
-    D2 --> G2[LLM – Génération]
-    G2 --> F2[Réponse finale\n(Quantitative / factuelle)]
+    DB2 --> D2[Statistiques]
+    V2 --> C2[Contexte textuel]
 
-    %% --- HYBRID ---
-    R -->|HYBRID| S3[SQL Tool]
-    R -->|HYBRID| V3[Recherche vectorielle]
-
-    S3 --> DB3[(PostgreSQL)]
-    DB3 --> D3[Données chiffrées]
-    V3 --> C3[Contexte qualitatif]
-
-    D3 --> G3[LLM – Synthèse]
-    C3 --> G3
-    G3 --> F3[Réponse finale\n(Stats + contexte)]
-    G3 --> F3[Réponse finale<br/>(Stats + contexte)]
+    D2 --> L3[LLM – Synthèse]
+    C2 --> L3
+    L3 --> F3[Réponse hybride]
 ```
 ---
 
