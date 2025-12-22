@@ -1,0 +1,46 @@
+nom_excel,nom_colonne_sql,type_sql,definition
+Player,player,VARCHAR,Nom du joueur
+Team,team,VARCHAR,Équipe du joueur (code à 3 lettres)
+Age,age,INTEGER,Âge du joueur
+GP,gp,INTEGER,Nombre de matchs joués (Games Played)
+W,wins,INTEGER,Nombre de victoires de l'équipe lors des matchs joués
+L,losses,INTEGER,Nombre de défaites
+Min,minutes,FLOAT,Minutes moyennes jouées par match
+PTS,pts,INTEGER,Points marqués en moyenne par match
+FGM,fgm,INTEGER,Tirs réussis par match (Field Goals Made)
+FGA,fga,INTEGER,Tirs tentés par match (Field Goals Attempted)
+FG%,fg_pct,FLOAT,Pourcentage de réussite aux tirs
+15:00,col_15_00_00,INTEGER,Nombre de tirs réussis après 15:00 de jeu
+3PA,three_pa,INTEGER,Tirs à 3 points tentés par match
+3P%,three_p_pct,FLOAT,Pourcentage de réussite à 3 points
+FTM,ftm,INTEGER,Lancers francs réussis (Free Throws Made)
+FTA,fta,INTEGER,Lancers francs tentés
+FT%,ft_pct,FLOAT,Pourcentage de réussite aux lancers francs
+OREB,oreb,INTEGER,Rebonds offensifs
+DREB,dreb,INTEGER,Rebonds défensifs
+REB,reb,INTEGER,Rebonds totaux
+AST,ast,INTEGER,Passes décisives (Assists)
+TOV,tov,INTEGER,Balles perdues (Turnovers)
+STL,stl,INTEGER,Interceptions (Steals)
+BLK,blk,INTEGER,Contres (Blocks)
+PF,pf,INTEGER,Fautes personnelles
+FP,fp,INTEGER,Fantasy Points
+DD2,dd2,INTEGER,Double-doubles (≥10 dans deux catégories principales)
+TD3,td3,INTEGER,Triple-doubles (≥10 dans trois catégories principales)
++/-,plus__minus,FLOAT,Plus-Minus (écart de score lorsque le joueur est sur le terrain)
+OFFRTG,off_rtg,FLOAT,Offensive Rating (points marqués par 100 possessions)
+DEFRTG,def_rtg,FLOAT,Defensive Rating (points encaissés par 100 possessions)
+NETRTG,net_rtg,FLOAT,Net Rating = OFFRTG - DEFRTG
+AST%,ast_pct,FLOAT,Pourcentage d'assists – implication dans les passes décisives
+AST/TO,ast_to_ratio,FLOAT,Ratio passes / pertes de balle
+AST RATIO,ast_ratio,FLOAT,Ratio d'assists pour 100 possessions
+OREB%,oreb_pct,FLOAT,Pourcentage de rebonds offensifs parmi ceux disponibles
+DREB%,dreb_pct,FLOAT,Pourcentage de rebonds défensifs parmi ceux disponibles
+REB%,reb_pct,FLOAT,Pourcentage de rebonds totaux parmi ceux disponibles
+TO RATIO,to_ratio,FLOAT,Turnover Ratio – pertes de balle par 100 possessions
+EFG%,efg_pct,FLOAT,Effective Field Goal % (pondère les 3 points)
+TS%,ts_pct,FLOAT,True Shooting % (inclut FG et FT dans l'efficacité)
+USG%,usg_pct,FLOAT,Usage Rate – % des actions utilisées par le joueur
+PACE,pace,FLOAT,Rythme de jeu (possessions par 48 minutes)
+PIE,pie,FLOAT,Player Impact Estimate – évaluation globale de l'impact
+POSS,poss,INTEGER,Nombre total de possessions jouées
