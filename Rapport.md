@@ -146,23 +146,22 @@ Nous introduisons un Tool SQL spécialisé, chargé de répondre aux questions q
 
 Ce scriptcorrespond à l’orchestration globale du système. iL s'agit d'un router intelligent qui analyse chaque question utilisateur et détermine dynamiquement la stratégie la plus appropriée : RAG seul pour les questions qualitatives, SQL seul pour les questions purement statistiques, ou une approche hybride lorsque la question nécessite à la fois des données chiffrées et un contexte interprétatif. Dans le cas hybride, le système déclenche à la fois une requête SQL et une recherche RAG, puis confie au LLM une étape finale de synthèse combinant faits statistiques et analyses qualitatives. Cette orchestration permet d’exploiter chaque source selon ses forces, tout en améliorant la précision, le recall et la pertinence globale des réponses.
 
-
 ```mermaid
 flowchart TD
-    U[Question utilisateur] --> R[Question Router<br/>(Analyse de l’intention)]
+    U[Question utilisateur] --> R[Question Router\n(Analyse de l’intention)]
 
     %% --- RAG ONLY ---
-    R -->|RAG ONLY| V1[Recherche vectorielle<br/>(FAISS + Embeddings)]
-    V1 --> C1[Contexte textuel<br/>(Discussions Reddit)]
+    R -->|RAG ONLY| V1[Recherche vectorielle\n(FAISS + Embeddings)]
+    V1 --> C1[Contexte textuel\n(Discussions Reddit)]
     C1 --> G1[LLM – Génération]
-    G1 --> F1[Réponse finale<br/>(Qualitative / contextuelle)]
+    G1 --> F1[Réponse finale\n(Qualitative / contextuelle)]
 
     %% --- SQL ONLY ---
-    R -->|SQL ONLY| S2[SQL Tool<br/>(NL → SQL)]
+    R -->|SQL ONLY| S2[SQL Tool\n(NL → SQL)]
     S2 --> DB2[(PostgreSQL)]
-    DB2 --> D2[Résultats SQL<br/>(Statistiques)]
+    DB2 --> D2[Résultats SQL\n(Statistiques)]
     D2 --> G2[LLM – Génération]
-    G2 --> F2[Réponse finale<br/>(Quantitative / factuelle)]
+    G2 --> F2[Réponse finale\n(Quantitative / factuelle)]
 
     %% --- HYBRID ---
     R -->|HYBRID| S3[SQL Tool]
@@ -174,9 +173,9 @@ flowchart TD
 
     D3 --> G3[LLM – Synthèse]
     C3 --> G3
+    G3 --> F3[Réponse finale\n(Stats + contexte)]
     G3 --> F3[Réponse finale<br/>(Stats + contexte)]
 ```
-
 ---
 
 4. **Evaluation Finale** 
