@@ -147,6 +147,7 @@ Nous introduisons un Tool SQL spécialisé, chargé de répondre aux questions q
 Ce scriptcorrespond à l’orchestration globale du système. iL s'agit d'un router intelligent qui analyse chaque question utilisateur et détermine dynamiquement la stratégie la plus appropriée : RAG seul pour les questions qualitatives, SQL seul pour les questions purement statistiques, ou une approche hybride lorsque la question nécessite à la fois des données chiffrées et un contexte interprétatif. Dans le cas hybride, le système déclenche à la fois une requête SQL et une recherche RAG, puis confie au LLM une étape finale de synthèse combinant faits statistiques et analyses qualitatives. Cette orchestration permet d’exploiter chaque source selon ses forces, tout en améliorant la précision, le recall et la pertinence globale des réponses.
 
 
+```mermaid
 flowchart TD
     U[Question utilisateur] --> R[Question Router<br/>(Analyse de l’intention)]
 
@@ -174,6 +175,7 @@ flowchart TD
     D3 --> G3[LLM – Synthèse]
     C3 --> G3
     G3 --> F3[Réponse finale<br/>(Stats + contexte)]
+```
 
 ---
 
